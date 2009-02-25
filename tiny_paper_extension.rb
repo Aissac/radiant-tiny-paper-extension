@@ -13,7 +13,9 @@ class TinyPaperExtension < Radiant::Extension
   # end
   
   def activate
-    # admin.tabs.add "Tiny Paper", "/admin/tiny_paper", :after => "Layouts", :visibility => [:all]
+    TinyMceFilter
+    Admin::PagesController.class_eval { include TinyMce::AddJavascriptsAndStyles }
+  	admin.page.edit.add :part_controls, "admin/page/tiny_mce_control"
   end
   
   def deactivate
