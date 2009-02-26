@@ -5,12 +5,17 @@ class TinyPaperExtension < Radiant::Extension
   version "1.0"
   description "Describe your extension here"
   url "http://yourwebsite.com/tiny_paper"
-  
-  # define_routes do |map|
-  #   map.namespace :admin, :member => { :remove => :get } do |admin|
-  #     admin.resources :tiny_paper
-  #   end
-  # end
+
+  define_routes do |map|
+    map.resources(:tiny_paper,
+      :controller   => 'admin/tiny_paper',
+      :path_prefix  => 'admin',
+      :collection   => {
+        :images => :get,
+        :files  => :get
+      }
+    )
+  end
   
   def activate
     TinyMceFilter

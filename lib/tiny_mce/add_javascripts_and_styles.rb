@@ -9,6 +9,7 @@ module TinyMce
             include_javascript "tiny_mce/tiny_mce"
             include_javascript "tiny_mce/tiny_mce_settings"
             include_javascript "tiny_mce/tiny_mce_toggle"
+            include_javascript "tiny_mce/application"
           end
       end
     end

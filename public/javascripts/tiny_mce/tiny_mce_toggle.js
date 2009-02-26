@@ -7,7 +7,6 @@ function instantiateEditor(partIndex){
 
 function toggleEditor(partIndex){
   var filterId = $('part_' + partIndex + '_filter_id');
- 
   if(filterId.value == 'Rich Text Editor'){
     addEditor(partIndex)
   }

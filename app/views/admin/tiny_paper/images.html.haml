@@ -1,0 +1,7 @@
+%ul#asset_images
+  - @assets.each do |asset|
+    %li
+      = link_to image_tag(asset.thumbnail(:thumbnail)), asset.asset.url
+      %span= link_to truncate(asset.title, 16), asset.asset.url
+
+.pages= will_paginate @assets
