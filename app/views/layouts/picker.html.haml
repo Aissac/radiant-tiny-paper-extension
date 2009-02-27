@@ -4,6 +4,8 @@
     %title
       = params[:action].singularize.titleize
       Browser
+    - @stylesheets.uniq.each do |stylesheet|
+      = stylesheet_link_tag stylesheet
     - @javascripts.uniq.each do |javascript|
       = javascript_include_tag javascript
   %body

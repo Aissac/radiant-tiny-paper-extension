@@ -5,3 +5,7 @@
       %span= link_to truncate(asset.title, 16), asset.asset.url
 
 .pages= will_paginate @assets
+
+  - @thumbs.each do |t|
+    
+    = t

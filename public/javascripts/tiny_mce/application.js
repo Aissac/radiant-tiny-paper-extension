@@ -3,8 +3,8 @@ assetMethods = {
     tinyMCE.activeEditor.windowManager.open({
       file:           "/admin/tiny_paper/" + type + "s",
       title:          (type == "image" ? "Image" : "File") + " Browser",
-      width:          520,
-      height:         (type == "image" ? 464 : 458),
+      width:          800,
+      height:         (type == "image" ? 580 : 580),
       resizable:      "yes",
       inline:         "yes",
       close_previous: "no"

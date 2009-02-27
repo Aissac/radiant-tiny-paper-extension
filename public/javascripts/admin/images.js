@@ -1,6 +1,6 @@
 var assetBrowser = {
   init: function() {
-    $$('a.image_asset').each(function (s) {
+    $$('#tp_asset_images a').each(function (s) {
       Event.observe(s, 'click', function () {
         assetBrowser.submit(this);
         return false;
@@ -14,7 +14,7 @@ var assetBrowser = {
     win.document.getElementById(tinyMCEPopup.getWindowArg("input")).value = link.href;
 
     if (win.ImageDialog.getImageData) win.ImageDialog.getImageData();
-    // if (win.ImageDialog.showPreviewImage) win.ImageDialog.showPreviewImage(URL);
+    if (win.ImageDialog.showPreviewImage) win.ImageDialog.showPreviewImage(link.href);
 
     tinyMCEPopup.close();
   }

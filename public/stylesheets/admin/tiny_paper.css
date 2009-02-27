@@ -1,0 +1,29 @@
+.clearfix:after                   {content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix                         {display:inline-block;}
+.clearfix                         {display:block;}
+#tp_top                           {background-color:#ccc;border:1px solid #000;padding:10px;margin:10px;}
+.tp_pages                         {float:right;}
+
+
+#tp_sidebar                       {width:180px;float:left;}
+#tp_sidebar div                   {background-color:#ccc;margin:5px;padding:5px;}
+#tp_sidebar a                     {text-decoration:none;}
+#tp_sidebar a:hover               {text-decoration:underline;}
+#tp_sidebar a.filtered            {font-weight:bold;color:#2B6FB6;text-decoration:underline;}
+
+.tp_form th                       {color:#000;font-size:108%;font-weight:bold;text-align:left;}
+.tp_form td                       {padding:3px 0 3px 15px;}
+#tp_view                          {}
+#tp_sizes                         {}
+
+#tp_content                       {width:550px;float:right;}
+
+#tp_asset_images li               {list-style:none;float:left;margin:0 10px 10px 0;border:1px solid #000;padding:5px 5px 0 5px;}
+#tp_asset_images li:hover         {border:1px solid #2B6FB6;cursor:pointer;}       
+#tp_asset_images .tp_asset_image  {width:100px;height:100px;display:block;}
+#tp_asset_images .tp_asset_title  {text-align:center;display:block;}
+#tp_asset_images a                {text-decoration:none;}
+#tp_asset_images a:hover, #tp_asset_images li:hover a
+                                  {text-decoration:underline;color:#2B6FB6;}
+                                  
+#tp_asset_titles li               {list-style:none;}
