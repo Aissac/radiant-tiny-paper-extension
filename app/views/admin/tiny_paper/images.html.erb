@@ -33,7 +33,20 @@
       </table>
       <% end -%>
     </div>
+    <div id="upload">
+      <% form_for :asset, :url => {:controller => 'admin/tiny_paper', :action => 'create'}, :html => { :method => "post", :multipart => true } do |f| %>
+      <table class="tp_form">
+        <tr><th><label>Upload</label></th></tr>
+        <tr><td><label for="title">Title:</label></td></tr>
+        <tr><td><%= f.text_field :title %></td></tr>
+        <tr><td><label for="asset">Choose a file to upload:</label></td></tr>
+        <tr><td><%= f.file_field :asset, :size => 10 %></td></tr>
+        <tr><td><input type="submit" value="Upload" /></td></tr>
+      </table>
+      <% end -%>
+    </div>
   </div>
+  
 
   <div id="tp_content">    
     <%= render :partial => "asset_images" if list_params[:view] == "thumbnails" %>

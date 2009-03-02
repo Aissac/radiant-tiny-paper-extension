@@ -15,6 +15,7 @@
 .tp_form td                       {padding:3px 0 3px 15px;}
 #tp_view                          {}
 #tp_sizes                         {}
+#upload input[type=text]          {width:120px;}
 
 #tp_content                       {width:550px;float:right;}
 

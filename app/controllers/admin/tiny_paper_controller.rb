@@ -25,6 +25,15 @@ class Admin::TinyPaperController < ApplicationController
     @thumbnails = Asset.attachment_definitions[:asset][:styles]
   end
   
+  def create
+    @asset = Asset.new(params[:asset])
+    if @asset.save      
+      redirect_to images_tiny_paper_path
+    else
+      render :action => :images
+    end
+  end
+  
   # def files
   #   
   #   @assets = Asset.paginate(
@@ -50,7 +59,7 @@ class Admin::TinyPaperController < ApplicationController
       
       update_list_params_cookies(args)
       
-      # pentru will_paginate
+      # for will_paginate
       params[:page] = list_params[:page]
     end
   
