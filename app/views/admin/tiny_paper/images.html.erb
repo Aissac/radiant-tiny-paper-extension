@@ -1,15 +1,17 @@
 <div id="tp_top" class="clearfix">
-  <% form_tag({}, {:id => "tp_filter", :method => :get}) do %>
-    <%# hidden_field_tag(:reset, 1) %>
-    <label for="title">Title:</label>
-    <%= text_field_tag :title, list_params[:title] %>
-    <%= filter_actions_tag %>
-  <% end -%>
-  
-  <div class="tp_pages">
+  <div id="tp_filter_form">
+    <% form_tag({}, {:id => "tp_filter", :method => :get}) do %>
+      <label for="title">Title:</label>
+      <%= text_field_tag :title, list_params[:title] %>
+      <%= filter_actions_tag %>
+    <% end -%>
+  </div>
+  <div id="tp_pages">
     <%= will_paginate @assets %>
   </div>
 </div>
+
+<%= show_flash_message %>
 
 <div id="tp_bd" class="clearfix">
   <div id="tp_sidebar">
@@ -33,7 +35,7 @@
       </table>
       <% end -%>
     </div>
-    <div id="upload">
+    <div id="tp_upload">
       <% form_for :asset, :url => {:controller => 'admin/tiny_paper', :action => 'create'}, :html => { :method => "post", :multipart => true } do |f| %>
       <table class="tp_form">
         <tr><th><label>Upload</label></th></tr>

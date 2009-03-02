@@ -1,35 +1,37 @@
 class Admin::TinyPaperController < ApplicationController
   layout "picker"
-  WebImageTypes = %w( image/jpg image/jpeg image/gif image/png image/x-png )  
-  
+  WebImageTypes = %w( image/jpg image/jpeg image/gif image/png image/x-png )
+
   def images
     include_stylesheet "admin/tiny_paper"
-    include_javascript "tiny_mce/tiny_mce_popup"    
+    include_javascript "tiny_mce/tiny_mce_popup"
     include_javascript "admin/images"
-    
+
     conditions = ["asset_content_type IN (?)", WebImageTypes]
 
     unless params[:title].blank?
       conditions.first << " AND title LIKE ?"
       conditions << "%#{params[:title]}%"
     end
-    
+
     filter_by_params([:title, :page, :view, :size])
     @assets = Asset.paginate(
       :page       => params[:page] || 1,
-      :per_page   => 12,
+      :per_page   => list_params[:view] == "thumbnails" ? 12 : 30,
       :conditions => conditions,
       :order      => "title ASC"
     )
-    
+
     @thumbnails = Asset.attachment_definitions[:asset][:styles]
   end
-  
+
   def create
     @asset = Asset.new(params[:asset])
-    if @asset.save      
+    if @asset.save
+      flash[:success] = "Asset successfully uploaded."
       redirect_to images_tiny_paper_path
     else
+      flash[:error] = "There was a problem!"
       render :action => :images
     end
   end

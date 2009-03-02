@@ -1,5 +1,5 @@
-<ul id="tp_asset_titles" class="tp_assets">
+<ol id="tp_asset_titles" class="tp_assets">
   <% @assets.each do |asset| %>
     <li><span class="tp_asset_title"><%= link_to asset.title, asset.asset.url(list_params[:size].to_sym) %></span></li>
   <% end -%>
-</ul>
+</ol>

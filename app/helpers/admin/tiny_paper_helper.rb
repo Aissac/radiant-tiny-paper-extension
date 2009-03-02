@@ -9,7 +9,7 @@ module Admin::TinyPaperHelper
   end
   
   def link_to_size(k,v)
-    link_to_image(k).to_s + ", " + (v.to_s)
+    v.blank? ? link_to_image(k).to_s + (v.to_s) : link_to_image(k).to_s + ', ' + (v.to_s)
   end
   
   def link_to_image(k)
@@ -18,6 +18,12 @@ module Admin::TinyPaperHelper
   
   def dom_class(k)
     list_params[:size] == k.to_s ? "filtered" : nil
+  end
+  
+  def show_flash_message
+    [:notice, :error, :success].map do |f|
+      content_tag :div, flash[f], :class => "flash #{f}" if flash[f]
+    end
   end
 
 end
