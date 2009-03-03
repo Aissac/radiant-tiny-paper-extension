@@ -1,5 +1,23 @@
-<ol id="tp_asset_titles" class="tp_assets">
-  <% @assets.each do |asset| %>
-    <li><span class="tp_asset_title"><%= link_to asset.title, asset.asset.url(list_params[:size].to_sym) %></span></li>
-  <% end -%>
-</ol>
+<div id="tp_ajax_update" class="clearfix">
+  <div id="tp_pages" class="clearfix">
+    <%= will_paginate @assets %>
+  </div>
+  <div id="tp_titles_holder">
+    <% index = 1 %>
+    <table id="tp_assets">
+      <thead>
+        <tr><th>No.</th><th>Image title</th><th>Image size</th></tr>
+      </thead>
+      <tbody>
+        <% @assets.each do |asset| %>
+        <tr>
+          <td class="index"><%= index %>.</td>
+          <td><%= link_to asset.title, asset.asset.url(list_params[:size].to_sym) %></td>
+          <td><%= asset.asset.size %></td>
+        </tr>
+        <% index = index + 1 %>
+        <% end -%>
+      </tbody>
+    </table>
+  </div>
+</div>

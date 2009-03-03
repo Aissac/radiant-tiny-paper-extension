@@ -1,11 +1,6 @@
 module Admin::TinyPaperHelper
-
-  def filter_actions_tag
-    submit_tag("Filter") + content_tag('span', ' | ' + reset_filters_tag)
-  end
-
   def reset_filters_tag
-    link_to("Reset", :reset => 1, :view => list_params[:view], :size => list_params[:size])
+    link_to("", {:reset => 1}, :id => 'reset', :style => 'display:none')
   end
   
   def link_to_size(k,v)
@@ -13,7 +8,7 @@ module Admin::TinyPaperHelper
   end
   
   def link_to_image(k)
-    link_to k, list_params.merge(:size => k), :class => dom_class(k)
+    link_to k, {:size => k}, :class => dom_class(k)
   end
   
   def dom_class(k)
@@ -25,5 +20,4 @@ module Admin::TinyPaperHelper
       content_tag :div, flash[f], :class => "flash #{f}" if flash[f]
     end
   end
-
 end

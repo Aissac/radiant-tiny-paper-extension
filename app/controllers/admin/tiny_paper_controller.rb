@@ -1,28 +1,37 @@
 class Admin::TinyPaperController < ApplicationController
   layout "picker"
   WebImageTypes = %w( image/jpg image/jpeg image/gif image/png image/x-png )
-
+    
   def images
-    include_stylesheet "admin/tiny_paper"
-    include_javascript "tiny_mce/tiny_mce_popup"
-    include_javascript "admin/images"
-
+    attach_js_css
     conditions = ["asset_content_type IN (?)", WebImageTypes]
 
-    unless params[:title].blank?
+    filter_by_params([:title, :page, :view, :size, :sort_order])
+    
+    unless list_params[:title].blank?
       conditions.first << " AND title LIKE ?"
-      conditions << "%#{params[:title]}%"
+      conditions << "%#{list_params[:title]}%"
     end
-
-    filter_by_params([:title, :page, :view, :size])
+    
     @assets = Asset.paginate(
-      :page       => params[:page] || 1,
-      :per_page   => list_params[:view] == "thumbnails" ? 12 : 30,
+      :page       => list_params[:page] || 1,
+      :per_page   => list_params[:view] == "thumbnails" ? 12 : 24,
       :conditions => conditions,
-      :order      => "title ASC"
+      :order      => list_params[:sort_order].blank? ? "title ASC" : "title " + list_params[:sort_order]
     )
 
     @thumbnails = Asset.attachment_definitions[:asset][:styles]
+
+    respond_to do |f|
+      f.html { render }
+      f.js { 
+        if list_params[:view] == "thumbnails"
+          render :partial => 'asset_images.html.erb', :layout => false
+        else
+          render :partial => 'asset_titles.html.erb', :layout => false
+        end
+      }
+    end
   end
 
   def create
@@ -71,4 +80,10 @@ class Admin::TinyPaperController < ApplicationController
       end
     end
     
+    def attach_js_css
+      include_stylesheet "admin/tiny_paper"
+      include_javascript "tiny_mce/tiny_mce_popup"
+      include_javascript "admin/images"
+      include_javascript "controls"
+    end 
 end

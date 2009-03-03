@@ -1,10 +1,17 @@
-<ul id="tp_asset_images" class="tp_assets clearfix">
-  <% @assets.each do |asset| %>
-    <li>
-      <a href="<%= asset.asset.url(list_params[:size].to_sym) %>">
-        <span class="tp_asset_image"><%= image_tag(asset.thumbnail(:thumbnail)) %></span>
-        <span class="tp_asset_title"><%= truncate(asset.title, 16) %></span>
-      </a>
-    </li>
-  <% end -%>
-</ul>
+<div id="tp_ajax_update" class="clearfix">
+  <div id="tp_pages" class="clearfix">
+    <%= will_paginate @assets %>
+  </div>
+  <div id="tp_assets_holder">
+    <ul id="tp_assets" class="tp_asset_images clearfix">
+      <% @assets.each do |asset| %>
+        <li>
+          <a href="<%= asset.asset.url(list_params[:size].to_sym) %>">
+            <span class="tp_asset_image"><%= image_tag(asset.thumbnail(:thumbnail)) %></span>
+            <span class="tp_asset_title"><%= truncate(asset.title, 16) %></span>
+          </a>
+        </li>
+      <% end -%>
+    </ul>
+  </div>
+</div>
