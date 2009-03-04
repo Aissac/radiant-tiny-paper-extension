@@ -1,10 +1,11 @@
 class Admin::TinyPaperController < ApplicationController
   layout "picker"
   WebImageTypes = %w( image/jpg image/jpeg image/gif image/png image/x-png )
-    
+  FILTER_PARAMS = [:title, :page, :view, :size, :sort_order]
+  
   def images
     attach_js_css
-    filter_by_params([:title, :page, :view, :size, :sort_order])    
+    filter_by_params(FILTER_PARAMS)
     @assets = Asset.assets_paginate(list_params)
     @thumbnails = Asset.attachment_definitions[:asset][:styles]
 
