@@ -1,6 +1,14 @@
-<div id="tp_ajax_update" class="clearfix">
-  <div id="tp_pages" class="clearfix">
-    <%= will_paginate @assets %>
+<div id="tp_ajax_update" class="clearfix">  
+  <div class="clearfix">
+    <div id="sort_dv">
+      <% form_tag({}, {:id => "tp_sort", :method => :get}) do %>
+        <label for="sort_order">Sort by title:</label>
+        <%= select_tag :sort_order, options_for_select([["Ascending", "ASC"], ["Descending", "DESC"]],list_params[:sort_order]) %>
+      <% end -%>
+    </div>
+    <div id="tp_pages">
+      <%= will_paginate @assets, :inner_window => 1, :outer_window => 1 %>
+    </div>
   </div>
   <div id="tp_titles_holder">
     <% index = 1 %>

@@ -26,7 +26,7 @@ document.observe("dom:loaded", function() {
     $("reset").show();
   }
   Event.observe('sort_order', 'change', function () {
-    $("tp_filter").submit();
+    $("tp_sort").submit();
   })
 });
 
@@ -46,4 +46,8 @@ function when_completing () {
       return false;
     });
   });
+  $("sort_order").stopObserving('change');
+  Event.observe('sort_order', 'change', function () {
+    $("tp_sort").submit();
+  })
 }

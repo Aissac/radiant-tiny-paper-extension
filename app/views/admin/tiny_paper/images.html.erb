@@ -2,7 +2,7 @@
   <% form_tag({}, {:id => "tp_filter", :method => :get}) do %>
   <table>
     <tr>
-      <td><label for="title">Title:</label></td>
+      <td><label for="title">Search:</label></td>
       <td>
         <div id="tp_tb">
           <%= text_field_tag :title, list_params[:title], :autocomplete => 'off' %>
@@ -22,12 +22,6 @@
         </div>
       </td>
       <td><img id="spinner" style="display:none" src="/images/admin/spinner.gif" alt="loading" /></td>
-    </tr>
-    <tr>
-      <td><label for="sort_by_title">Sort by title:</label></td>
-      <td>
-        <%= select_tag :sort_order, options_for_select([["Ascending", "ASC"], ["Descending", "DESC"]],list_params[:sort_order]) %>
-      </td>
     </tr>
   </table>
   <% end -%>
