@@ -4,22 +4,8 @@ class Admin::TinyPaperController < ApplicationController
     
   def images
     attach_js_css
-    conditions = ["asset_content_type IN (?)", WebImageTypes]
-
-    filter_by_params([:title, :page, :view, :size, :sort_order])
-    
-    unless list_params[:title].blank?
-      conditions.first << " AND title LIKE ?"
-      conditions << "%#{list_params[:title]}%"
-    end
-    
-    @assets = Asset.paginate(
-      :page       => list_params[:page] || 1,
-      :per_page   => list_params[:view] == "thumbnails" ? 12 : 24,
-      :conditions => conditions,
-      :order      => list_params[:sort_order].blank? ? "title ASC" : "title " + list_params[:sort_order]
-    )
-
+    filter_by_params([:title, :page, :view, :size, :sort_order])    
+    @assets = Asset.assets_paginate(list_params)
     @thumbnails = Asset.attachment_definitions[:asset][:styles]
 
     respond_to do |f|
