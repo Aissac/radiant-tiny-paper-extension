@@ -1,11 +1,11 @@
 class Admin::TinyPaperController < ApplicationController
   layout "picker"
   WebImageTypes = %w( image/jpg image/jpeg image/gif image/png image/x-png )
-  FILTER_PARAMS = [:title, :page, :view, :size, :sort_order]
   
   def images
     attach_js_css
-    filter_by_params(FILTER_PARAMS)
+    include_javascript "admin/images"
+    filter_by_params([:title, :page, :view, :size, :sort_order])
     @assets = Asset.assets_paginate(list_params)
     @thumbnails = Asset.attachment_definitions[:asset][:styles]
 
@@ -13,9 +13,9 @@ class Admin::TinyPaperController < ApplicationController
       f.html { render }
       f.js { 
         if list_params[:view] == "thumbnails"
-          render :partial => 'asset_images.html.erb', :layout => false
+          render :partial => 'images_images.html.erb', :layout => false
         else
-          render :partial => 'asset_titles.html.erb', :layout => false
+          render :partial => 'images_titles.html.erb', :layout => false
         end
       }
     end
@@ -25,21 +25,26 @@ class Admin::TinyPaperController < ApplicationController
     @asset = Asset.new(params[:asset])
     if @asset.save
       flash[:success] = "Asset successfully uploaded."
-      redirect_to images_tiny_paper_path
+      redirect_to :"#{params[:current_page]}_tiny_paper"
     else
       flash[:error] = "There was a problem!"
-      render :action => :images
+      render :action => params[:current_page].to_sym
     end
   end
   
-  # def files
-  #   
-  #   @assets = Asset.paginate(
-  #     :page       => params[:page] || 1,
-  #     :per_page   => 6,
-  #     :order      => "title ASC"
-  #   )
-  # end
+  def files
+    attach_js_css
+    include_javascript "admin/files"
+    filter_by_params([:title, :page, :sort_order])
+    @assets = Asset.assets_paginate(list_params)
+    
+    respond_to do |f|
+      f.html { render }
+      f.js { 
+        render :partial => 'files_titles.html.erb', :layout => false
+      }
+    end
+  end
   
   def list_params
     @list_params ||= {}
@@ -70,7 +75,6 @@ class Admin::TinyPaperController < ApplicationController
     def attach_js_css
       include_stylesheet "admin/tiny_paper"
       include_javascript "tiny_mce/tiny_mce_popup"
-      include_javascript "admin/images"
       include_javascript "controls"
     end 
 end
