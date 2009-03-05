@@ -2,13 +2,19 @@ var assetBrowser = {
   init: function() {
     $$('#tp_assets a').each(function (s) {
       Event.observe(s, 'click', function () {
-        assetBrowser.submit(this);
-        return false;
+        if ($('type').value == 'images' ) {
+          assetBrowser.submit_image(this);
+          return false; 
+        }
+        if ($('type').value == 'files' ) {
+          assetBrowser.submit_file(this.href);
+          return false; 
+        }
       });
     });
   },
 
-  submit: function(link) {
+  submit_image: function(link) {
     var win = tinyMCEPopup.getWindowArg("window");
 
     win.document.getElementById(tinyMCEPopup.getWindowArg("input")).value = link.href;
@@ -16,6 +22,14 @@ var assetBrowser = {
     if (win.ImageDialog.getImageData) win.ImageDialog.getImageData();
     if (win.ImageDialog.showPreviewImage) win.ImageDialog.showPreviewImage(link.href);
 
+    tinyMCEPopup.close();
+  },
+  
+  submit_file: function(href) {
+    var win = tinyMCEPopup.getWindowArg("window");
+    
+    win.document.getElementById(tinyMCEPopup.getWindowArg("input")).value = href;
+    
     tinyMCEPopup.close();
   }
 };

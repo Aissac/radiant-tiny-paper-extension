@@ -1,5 +1,5 @@
 <div id="tp_upload">
-  <% form_for :asset, :url => {:controller => 'admin/tiny_paper', :action => controller.action_name}, :html => { :method => "post", :multipart => true } do |f| %>
+  <% form_for :asset, :url => create_path, :html => { :method => "post", :multipart => true } do |f| %>
   <%= hidden_field_tag(:current_page, controller.action_name) %>
   <table class="tp_form">
     <tr><th><label>Upload</label></th></tr>
@@ -11,3 +11,5 @@
   </table>
   <% end -%>
 </div>
+
+<!-- {:controller => 'admin/tiny_paper', :action => 'create'} -->

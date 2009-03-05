@@ -7,14 +7,11 @@ class TinyPaperExtension < Radiant::Extension
   url "http://yourwebsite.com/tiny_paper"
 
   define_routes do |map|
-    map.resources(:tiny_paper,
-      :controller   => 'admin/tiny_paper',
-      :path_prefix  => 'admin',
-      :collection   => {
-        :images => :get,
-        :files  => :get
-      }
-    )
+    map.with_options(:controller => 'admin/tiny_paper') do |asset|
+      asset.images            "/admin/tiny_paper/images",                 :action => 'images'
+      asset.files             "/admin/tiny_paper/files",                  :action => 'files'
+      asset.create            "/admin/tiny_paper/create",                 :action => 'create'
+    end
   end
   
   def activate

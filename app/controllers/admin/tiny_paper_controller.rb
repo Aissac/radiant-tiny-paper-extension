@@ -4,7 +4,6 @@ class Admin::TinyPaperController < ApplicationController
   
   def images
     attach_js_css
-    include_javascript "admin/images"
     filter_by_params([:title, :page, :view, :size, :sort_order])
     @assets = Asset.assets_paginate(list_params)
     @thumbnails = Asset.attachment_definitions[:asset][:styles]
@@ -25,16 +24,15 @@ class Admin::TinyPaperController < ApplicationController
     @asset = Asset.new(params[:asset])
     if @asset.save
       flash[:success] = "Asset successfully uploaded."
-      redirect_to :"#{params[:current_page]}_tiny_paper"
+      redirect_to  :"#{params[:current_page]}"
     else
-      flash[:error] = "There was a problem!"
-      render :action => params[:current_page].to_sym
+      flash[:error] = @asset.errors.full_messages
+      redirect_to :"#{params[:current_page]}"
     end
   end
   
   def files
     attach_js_css
-    include_javascript "admin/files"
     filter_by_params([:title, :page, :sort_order])
     @assets = Asset.assets_paginate(list_params)
     
@@ -75,6 +73,7 @@ class Admin::TinyPaperController < ApplicationController
     def attach_js_css
       include_stylesheet "admin/tiny_paper"
       include_javascript "tiny_mce/tiny_mce_popup"
+      include_javascript "admin/tiny_paper"
       include_javascript "controls"
     end 
 end

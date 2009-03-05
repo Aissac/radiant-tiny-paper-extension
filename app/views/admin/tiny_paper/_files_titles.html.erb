@@ -14,13 +14,14 @@
     <% index = 1 %>
     <table id="tp_assets">
       <thead>
-        <tr><th>No.</th><th>Image title</th><th>Image size</th></tr>
+        <tr><th>No.</th><th>File Name</th><th>File size</th></tr>
       </thead>
       <tbody>
         <% @assets.each do |asset| %>
         <tr>
           <td class="index"><%= index %>.</td>
           <td><%= link_to asset.title, asset.asset.url %></td>
+          <td><%= asset.asset.size %></td>
         </tr>
         <% index = index + 1 %>
         <% end -%>
