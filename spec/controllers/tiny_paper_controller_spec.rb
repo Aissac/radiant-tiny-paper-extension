@@ -40,7 +40,7 @@ describe Admin::TinyPaperController do
     end
     
     it "parses list_params" do
-      controller.should_receive(:filter_by_params).with(Admin::TinyPaperController::FILTER_PARAMS)
+      controller.should_receive(:filter_by_params).with([:view, :size])
       do_http_get
     end
     
@@ -55,13 +55,89 @@ describe Admin::TinyPaperController do
     end
     # xhr request below
     it "renders the images partial when view is set to thumbnails" do
-      controller.should_receive(:render).with(:partial => 'asset_images.html.erb', :layout => false).and_return(true)
+      controller.should_receive(:render).with(:partial => 'images_images.html.erb', :layout => false).and_return(true)
       do_xhr_get
     end
     
     it "renders the titles list partial when view is set to text list" do
-      controller.should_receive(:render).with(:partial => 'asset_titles.html.erb', :layout => false).and_return(true)
+      controller.should_receive(:render).with(:partial => 'images_titles.html.erb', :layout => false).and_return(true)
       do_xhr_get(:view => 'text_list')
+    end
+  end
+  
+  describe "handling GET files" do
+    before do
+      @assets = (1..10).map { |i| mock_model(Asset)}
+      
+      Asset.stub!(:assets_paginate).and_return(@assets)
+      
+      @list_params = {:view => "thumbnails"}
+      controller.stub!(:list_params).and_return(@list_params)
+    end
+    
+    def do_http_get
+      get :files
+    end
+    
+    def do_xhr_get(options={})
+      xhr :get, 'files', options
+    end
+    
+    it "is succesful" do
+      do_http_get
+      response.should be_success
+    end
+    
+    it "renders the images template" do
+      do_http_get
+      response.should render_template(:files)
+    end
+    
+    it "parses list_params" do
+      controller.should_receive(:filter_by_params).with()
+      do_http_get
+    end
+    
+    it "finds all assets with list params" do
+      Asset.should_receive(:assets_paginate).with(@list_params).and_return(@assets)
+      do_http_get
+    end
+    
+    it "assigns the found assets to the view" do
+      do_http_get
+      assigns[:assets].should == @assets
+    end
+    # xhr request below
+    it "renders the images partial when view is set to thumbnails" do
+      controller.should_receive(:render).with(:partial => 'files_titles.html.erb', :layout => false).and_return(true)
+      do_xhr_get
+    end
+  end
+  
+  describe "handling GET pages" do
+    
+    before do
+      @homepage = mock_model(Page, :parent_id => nil)
+      Page.stub!(:find).and_return(:@homepage)
+    end
+    
+    def do_get
+      get :pages
+    end
+    
+    it "is succesful" do
+      do_get
+      response.should be_success
+    end
+    
+    it "renders the pages template" do
+      do_get
+      response.should render_template(:pages)
+    end
+    
+    it "finds the homepage" do
+      Page.should_receive(:find).with(:first, :conditions => {:parent_id => nil}, :include    => :children)
+      do_get
     end
   end
   
@@ -73,7 +149,7 @@ describe Admin::TinyPaperController do
     end
     
     def do_post(options={})
-      post :create, :asset => options
+      post :create, :type => 'images', :asset => options
     end
     
     it "creates a new asset" do
@@ -86,12 +162,32 @@ describe Admin::TinyPaperController do
       response.should redirect_to('admin/tiny_paper/images')
     end
     
-    it "renders the images template on failure" do
+    it "redirect to the images/files template on failure" do
+      @errors = mock("error")
+      @asset.stub!(:errors).and_return(@errors)
+      @errors.stub!(:full_messages)
       @asset.should_receive(:save).and_return(false)
       do_post
-      response.should render_template(:images)
-    end
+      response.should redirect_to('admin/tiny_paper/images')
+    end 
+  end
+  
+  describe "including member assets" do
+
+    [:images, :files, :pages].each do |action|
+      it "#{action} includes javascripts" do
+        ['tiny_mce/tiny_mce_popup','admin/tiny_paper','controls'].each do |js|
+          controller.should_receive(:include_javascript).with(js)
+        end
+          get action
+      end
       
+      it "#{action} includes stylesheets" do
+        controller.should_receive(:include_stylesheet).with("admin/tiny_paper")
+        get action
+      end
+    end
+
   end
   
   describe "parsing list_params" do

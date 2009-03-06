@@ -58,12 +58,20 @@ function when_completing () {
   });
   $$('#tp_assets a').each(function (s) {
     Event.observe(s, 'click', function () {
-      assetBrowser.submit(this);
-      return false;
+      if ($('type').value == 'images' ) {
+        assetBrowser.submit_image(this);
+        return false; 
+      }
+      if ($('type').value == 'files' || $('type').value == 'pages' ) {
+        assetBrowser.submit_file(this.href);
+        return false; 
+      }
     });
   });
-  $("sort_order").stopObserving('change');
-  Event.observe('sort_order', 'change', function () {
-    $("tp_sort").submit();
-  })
+  if ($("sort_order")){
+    $("sort_order").stopObserving('change');
+    Event.observe('sort_order', 'change', function () {
+      $("tp_sort").submit();
+    }) 
+  }
 }

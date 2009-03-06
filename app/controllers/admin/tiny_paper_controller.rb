@@ -5,7 +5,7 @@ class Admin::TinyPaperController < ApplicationController
   
   def images
     attach_js_css
-    filter_by_params([:view, :size,])
+    filter_by_params([:view, :size])
     list_params[:images] = 'images'
     @assets = Asset.assets_paginate(list_params)
     @thumbnails = Asset.attachment_definitions[:asset][:styles]
