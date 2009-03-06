@@ -12,19 +12,19 @@
     </div>
   </div>
   <div id="tp_titles_holder">
-    <% index = 1 %>
+    <% index = (list_params[:page].to_i - 1) * 24 %>
     <table id="tp_assets">
       <thead>
         <tr><th>No.</th><th>Image title</th><th>Image size</th></tr>
       </thead>
       <tbody>
         <% @assets.each do |asset| %>
-        <tr>
-          <td class="index"><%= index %>.</td>
-          <td><%= link_to asset.title, asset.asset.url(list_params[:size].to_sym) %></td>
-          <td><%= asset.asset.size %></td>
-        </tr>
-        <% index = index + 1 %>
+          <% index = index + 1 %>
+          <tr>
+            <td class="index"><%= index %>.</td>
+            <td><%= link_to asset.title, asset.asset.url(list_params[:size].to_sym) %></td>
+            <td><%= number_to_human_size(asset.asset.size) %></td>
+          </tr>
         <% end -%>
       </tbody>
     </table>

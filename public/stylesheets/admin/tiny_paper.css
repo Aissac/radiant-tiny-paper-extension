@@ -56,6 +56,8 @@
                                    background:#CCC;border:1px solid #000;}
 #tp_tabs li a                     {text-decoration:none;}
 #tp_tabs li.selected              {background:#EEE;}
+a.sort_asc                        {background:transparent url(/images/admin/asc.gif) no-repeat right center;padding-right:17px;}
+a.sort_desc                       {background:transparent url(/images/admin/desc.gif) no-repeat right center;padding-right:17px;}
 
 #tp_content_files a               {text-decoration:none;font-size:13px;}
 #tp_content_files ul              {margin:0;padding:0 0 0 30px;}

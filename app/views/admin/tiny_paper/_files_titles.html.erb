@@ -5,7 +5,7 @@
     </div>
   </div>
   <div id="tp_titles_holder">
-    <% index = 1 %>
+    <% index = (list_params[:page].to_i - 1) * 24 %>
     <table>
       <thead>
         <tr>
@@ -17,13 +17,13 @@
       </thead>
       <tbody id="tp_assets">
         <% @assets.each do |asset| %>
-        <tr>
-          <td class="index"><%= index %>.</td>
-          <td><%= link_to asset.title, asset.asset.url %></td>
-          <td><%= asset.asset_content_type %></td>
-          <td><%= asset.asset.size %></td>
-        </tr>
-        <% index = index + 1 %>
+          <% index = index + 1 %>
+          <tr>
+            <td class="index"><%= index %>.</td>
+            <td><%= link_to asset.title, asset.asset.url %></td>
+            <td><%= asset.asset_content_type %></td>
+            <td><%= number_to_human_size(asset.asset.size) %></td>
+          </tr>
         <% end -%>
       </tbody>
     </table>
