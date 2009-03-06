@@ -6,7 +6,7 @@ var assetBrowser = {
           assetBrowser.submit_image(this);
           return false; 
         }
-        if ($('type').value == 'files' ) {
+        if ($('type').value == 'files' || $('type').value == 'pages' ) {
           assetBrowser.submit_file(this.href);
           return false; 
         }
@@ -36,12 +36,14 @@ var assetBrowser = {
 
 document.observe("dom:loaded", function() { 
   tinyMCEPopup.onInit.add(assetBrowser.init, assetBrowser);
-  if ($("title").value != null && $("title").value.length != 0) {
+  if ( $('title') && ($("title").value != null && $("title").value.length != 0)) {
     $("reset").show();
   }
-  Event.observe('sort_order', 'change', function () {
-    $("tp_sort").submit();
-  })
+  if ($('sort_order')) {
+    Event.observe('sort_order', 'change', function () {
+      $("tp_sort").submit();
+    }) 
+  }
 });
 
 function when_starting () {

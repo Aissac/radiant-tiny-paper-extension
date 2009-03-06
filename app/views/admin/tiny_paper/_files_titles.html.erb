@@ -1,26 +1,26 @@
 <div id="tp_ajax_update" class="clearfix">  
   <div class="clearfix">
-    <div id="sort_dv">
-      <% form_tag({}, {:id => "tp_sort", :method => :get}) do %>
-        <label for="sort_order">Sort by title:</label>
-        <%= select_tag :sort_order, options_for_select([["Ascending", "ASC"], ["Descending", "DESC"]],list_params[:sort_order]) %>
-      <% end -%>
-    </div>
     <div id="tp_pages">
       <%= will_paginate @assets, :inner_window => 1, :outer_window => 1 %>
     </div>
   </div>
   <div id="tp_titles_holder">
     <% index = 1 %>
-    <table id="tp_assets">
+    <table>
       <thead>
-        <tr><th>No.</th><th>File Name</th><th>File size</th></tr>
+        <tr>
+          <th>No.</th>
+          <th><%= sortable_column_head("File Name", :title) %></th>
+          <th><%= sortable_column_head("File Type", :asset_content_type) %></th>
+          <th>File size</th>
+        </tr>
       </thead>
-      <tbody>
+      <tbody id="tp_assets">
         <% @assets.each do |asset| %>
         <tr>
           <td class="index"><%= index %>.</td>
           <td><%= link_to asset.title, asset.asset.url %></td>
+          <td><%= asset.asset_content_type %></td>
           <td><%= asset.asset.size %></td>
         </tr>
         <% index = index + 1 %>

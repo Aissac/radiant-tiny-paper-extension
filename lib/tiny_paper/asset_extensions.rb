@@ -7,8 +7,17 @@ module TinyPaper
           options = {
             :page => params[:page],
             :per_page => params[:view] == "thumbnails" ? 12 : 24,
-            :order => params[:sort_order].blank? ? "title ASC" : "title " + params[:sort_order]
+            :conditions => nil
           }
+          
+          if ['title', 'asset_content_type'].include?(params[:sort_by]) && %w(asc desc).include?(params[:sort_order])
+            options[:order] = "#{params[:sort_by]} #{params[:sort_order]}"
+          end          
+          
+          if !params[:images].blank?
+            options[:conditions] = ["asset_content_type IN (?)", Admin::TinyPaperController::WebImageTypes]
+          end
+          
           self.by_title(params[:title]).paginate(options)
         end
       end

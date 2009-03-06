@@ -1,3 +1,7 @@
+<ul id="tp_tabs" class="clearfix">
+  <li <% if controller.action_name == 'files' %> class="selected" <% end %>><a href="<%= files_path %>">Files</a></li>
+  <li <% if controller.action_name == 'pages' %> class="selected" <% end %>><a href="<%= pages_path %>">Pages</a></li>
+</ul>
 <div id="tp_top" class="clearfix">
   <% form_tag({}, {:id => "tp_filter", :method => :get}) do %>
   <table>
@@ -37,4 +41,5 @@
     <%= render :partial => "files_titles" %>
   </div>
 </div>
-<input type="hidden" id="type" name="type" value="files" />
+
+<%= hidden_field_tag(:type, 'files') %>
