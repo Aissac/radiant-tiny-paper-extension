@@ -12,6 +12,6 @@ tinyMCE.init({
   theme_advanced_toolbar_align : "left",
   theme_advanced_statusbar_location : "bottom",
   theme_advanced_resizing : true,
-  content_css : "css/example.css",
+  relative_urls : false,
   file_browser_callback : "assetMethods.browserHook",
 });

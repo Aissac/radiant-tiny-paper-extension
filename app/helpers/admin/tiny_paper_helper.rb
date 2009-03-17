@@ -33,13 +33,13 @@ module Admin::TinyPaperHelper
   end
 
   def page_list(page)
-    "<li><a href=#{page.title}>#{page.title}</a></li>" + 
+    "<li><a href=#{page.url}>#{page.title}</a></li>" + 
     page.children.collect do |child| 
       unless child.virtual? || !child.published?
         "<li class='no_bullet'><ul> #{page_list(child)} </ul></li>"
       end
     end.join
-  end  
+  end
   
   protected
   
