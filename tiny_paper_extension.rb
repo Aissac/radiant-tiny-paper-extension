@@ -2,9 +2,9 @@
 # require_dependency 'application'
 
 class TinyPaperExtension < Radiant::Extension
-  version "1.0"
-  description "Describe your extension here"
-  url "http://yourwebsite.com/tiny_paper"
+  version "0.9"
+  description "Radiand CMS Tiny MCE support using Paperclipped assets"
+  url "http://blog.aissac.ro/radiant/tiny-paper-extension/"
 
   define_routes do |map|
     map.with_options(:controller => 'admin/tiny_paper') do |asset|
