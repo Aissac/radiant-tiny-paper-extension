@@ -1,0 +1,30 @@
+#tp_ajax_update.clearfix
+  #tp_middle.clearfix
+    #tp_pages
+      = will_paginate @assets, :inner_window => 1, :outer_window => 0
+    #ddl.clearfix
+      #view_mode
+        - form_tag({}, {:id => "tp_view_mode", :method => :get}) do
+          = hidden_field_tag :page, '1'
+          %label{:for => :view} View mode:
+          = select_tag :view, options_for_select([["Text List", "text_list"], ["Thumbnails", "thumbnails"]],list_params[:view])
+      #sort_dv
+        - form_tag({}, {:id => "tp_sort", :method => :get}) do
+          = hidden_field_tag :sort_by, 'title'
+          %label{:for => :sort_order} Sort by title:
+          = select_tag :sort_order, options_for_select([["Ascending", "asc"], ["Descending", "desc"]],list_params[:sort_order])
+  #tp_titles_holder
+    - index = (list_params[:page].to_i - 1) * 25
+    %table#tp_assets
+      %thead
+        %tr
+          %th No.
+          %th Image title
+          %th Image size
+      %tbody
+        - @assets.each do |asset|
+          - index = index + 1
+          %tr
+            %td.index= index
+            %td= link_to asset.title, asset.asset.url(list_params[:size].to_sym)
+            %td= asset.width.to_s + 'px x ' + asset.height.to_s + 'px'

@@ -1,37 +1,40 @@
 .clearfix:after                   {content:".";display:block;height:0;clear:both;visibility:hidden;}
 .clearfix                         {display:inline-block;}
 .clearfix                         {display:block;}
-
+#tp_body                          {margin:-10px -7px 0 -7px}
 /* top */
-#tp_top                           {background-color:#ccc;border:1px solid #000;padding:10px;margin-bottom:10px;}
+#tp_top                           {background-color:#ccc;border-left:1px solid #0066CC;border-right:1px solid #0066CC;padding:10px 10px 0 10px;}
+#tp_top_round                     {background:#ccc url(/images/admin/tiny_paper/round_corner_bottom.png) no-repeat left bottom;margin-bottom:10px;}
+#tp_top_round_inside              {background:#ccc url(/images/admin/tiny_paper/round_corner_bottom.png) no-repeat right bottom;margin-left:16px;height:16px;}
+#tp_top .left                     {float:left;width:30%;}
+#tp_top .right                    {float:right;width:68%;}
 #tp_top p                         {margin:0;padding:0;}
 #tp_tb                            {background-color:#fff;border:1px solid #808080;width:147px;}
-#reset                            {background:transparent url(/images/admin/reset.png) no-repeat right center;
+#reset                            {background:transparent url(/images/admin/tiny_paper/reset.png) no-repeat right center;
                                   padding:0 7px;outline:none;text-decoration:none;}
 #tp_tb input                      {border:none;}
 #tp_filter                        {margin:0;}
-
-/* sidebar */
-#tp_sidebar                       {width:25%;float:left;}
-#tp_sidebar div                   {background-color:#ccc;margin:5px;padding:5px;}
-#tp_sidebar a                     {text-decoration:none;}
-#tp_sidebar a:hover               {text-decoration:underline;}
-#tp_sidebar a.filtered            {font-weight:bold;color:#2B6FB6;text-decoration:underline;}
-.tp_form th                       {color:#000;font-size:108%;font-weight:bold;text-align:left;}
-.tp_form td                       {padding:3px 0 3px 15px;}
-#tp_upload input[type=text]       {width:120px;}
+label                             {font-size:11px;font-weight:normal;color:#21759B;}
+/* upload */
+#tp_upload .tp_form               {float:right;}
+#tp_upload form                   {margin:0;}
+#tp_upload input[type=text]       {width:205px;}
+#tp_upload .tp_form th            {text-align:right;padding-right:5px;}
 
 /* content */
-#tp_content                       {width:73%;float:right;}
-.pagination                       {padding:3px;text-align:center;float:right;}
+#tp_middle                        {margin-bottom:10px;padding:0 20px;}
+#ddl                              {width:54%;float:right;margin-top:3px;}
+#ddl div                          {float:right;margin-right:5px;}
+#tp_pages                         {width:45%;float:left;}
+
+.pagination                       {padding:3px;text-align:center;float:left;}
 .pagination a, .pagination span   {padding:0.2em 0.3em;}
 .pagination span.disabled         {color:#AAAAAA;}
-.pagination span.current          {background:transparent url(/images/admin/circle.png) no-repeat scroll 50% 50%;font-weight:bold;padding:4px;}
-.pagination a                     {color:black;text-decoration:none;}
-.pagination a:hover, .pagination a:focus 
+.pagination span.current          {background:transparent url(/images/admin/tiny_paper/circle.png) no-repeat scroll 50% 50%;font-weight:bold;padding:4px;}
+.pagination a:link, .pagination a:visited, .pagination a:hover, .pagination a:focus
+                                  {color:#21759B;text-decoration:none;}
+.pagination a:hover, .pagination a:focus
                                   {text-decoration:underline;}
-#sort_dv                          {width:30%;float:left;}                                  
-#tp_pages                         {width:68%;float:right;}
 
 /* thumbnails */
 .tp_asset_images li               {list-style:none;float:left;margin:0 10px 10px 0;border:1px solid #000;padding:5px 5px 0 5px;display:block;}
@@ -42,22 +45,26 @@
 .tp_asset_images a:hover, #tp_asset_images li:hover a
                                   {text-decoration:underline;color:#2B6FB6;}
 /* text list */
-#tp_titles_holder table           {margin-top:15px;width:100%;}
-#tp_titles_holder table th        {font-size:14px;text-align:left;padding:0 5px;}
-#tp_titles_holder table td        {padding:0 5px;border-left:1px solid #ccc;}
+#tp_titles_holder table           {width:90%;margin:0 5%;}
+#tp_titles_holder table th        {font-size:14px;text-align:left;padding:0 10px;}
+#tp_titles_holder table td        {padding:0 10px;border-left:1px solid #2B6FB6;}
 #tp_titles_holder table td.index  {text-align:right;border-left:none;width:25px;}
 .flash                            {padding:5px 0 5px 25px;margin:0 100px 10px 100px;font:#003300;border:2px solid #CCC;}
-.success                          {background:#FFF url(/images/admin/accept.png) no-repeat 5px 50%;}
-.error                            {background:#FFF url(/images/admin/exclamation.png) no-repeat 5px 50%;}
+.success                          {background:#FFF url(/images/admin/tiny_paper/accept.png) no-repeat 5px 50%;}
+.error                            {background:#FFF url(/images/admin/tiny_paper/exclamation.png) no-repeat 5px 50%;}
 
 /* file browser */
-#tp_tabs                          {margin:0;padding:0;}
-#tp_tabs li                       {list-style:none;float:left;padding:3px 5px;margin-left:10px;margin-bottom:5px;
-                                   background:#CCC;border:1px solid #000;}
-#tp_tabs li a                     {text-decoration:none;}
+#tp_tabs                          {margin:0 0 10px 0;padding:0;}
+#tp_tabs li                       {list-style:none;float:left;margin-right:10px;}
+#tp_tabs li a                     {text-decoration:none;width:70px;height:29px;display:block;text-indent:-9999px;outline:none;}
 #tp_tabs li.selected              {background:#EEE;}
-a.sort_asc                        {background:transparent url(/images/admin/asc.gif) no-repeat right center;padding-right:17px;}
-a.sort_desc                       {background:transparent url(/images/admin/desc.gif) no-repeat right center;padding-right:17px;}
+#files_link                       {background:transparent url(/images/admin/tiny_paper/files.png) no-repeat left top;}
+#files_link.selected              {background:transparent url(/images/admin/tiny_paper/files_selected.png) no-repeat left top;}
+#pages_link                       {background:transparent url(/images/admin/tiny_paper/pages.png) no-repeat left top;}
+#pages_link.selected              {background:transparent url(/images/admin/tiny_paper/pages_selected.png) no-repeat left top;}
+
+a.sort_asc                        {background:transparent url(/images/admin/tiny_paper/asc.gif) no-repeat right center;padding-right:17px;}
+a.sort_desc                       {background:transparent url(/images/admin/tiny_paper/desc.gif) no-repeat right center;padding-right:17px;}
 
 #tp_content_files a               {text-decoration:none;font-size:13px;}
 #tp_content_files ul              {margin:0;padding:0 0 0 30px;}

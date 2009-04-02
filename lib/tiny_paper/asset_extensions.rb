@@ -6,7 +6,7 @@ module TinyPaper
         def self.assets_paginate(params)
           options = {
             :page => params[:page],
-            :per_page => 24,
+            :per_page => 25,
             :conditions => nil
           }
           
@@ -15,7 +15,7 @@ module TinyPaper
           end          
           
           if !params[:images].blank?
-            options[:per_page] = (params[:view] == "thumbnails") ? 12 : 24
+            options[:per_page] = (params[:view] == "thumbnails") ? 15 : 25
             options[:conditions] = ["asset_content_type IN (?)", Admin::TinyPaperController::WebImageTypes]
           end
           

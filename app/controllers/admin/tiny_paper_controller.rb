@@ -14,9 +14,9 @@ class Admin::TinyPaperController < ApplicationController
       f.html { render }
       f.js { 
         if list_params[:view] == "thumbnails"
-          render :partial => 'images_images.html.erb', :layout => false
+          render :partial => 'images_images.html.haml', :layout => false
         else
-          render :partial => 'images_titles.html.erb', :layout => false
+          render :partial => 'images_titles.html.haml', :layout => false
         end
       }
     end
@@ -29,13 +29,13 @@ class Admin::TinyPaperController < ApplicationController
     
     respond_to do |f|
       f.html { render }
-      f.js { render :partial => 'files_titles.html.erb', :layout => false }
+      f.js { render :partial => 'files_titles.html.haml', :layout => false }
     end
   end
   
   def pages
     attach_js_css
-    @homepage = Page.find(:first, :conditions => {:parent_id => nil}, :include    => :children)
+    @homepage = Page.find(:first, :conditions => {:parent_id => nil}, :include => :children)
   end
   
   def create
@@ -44,7 +44,7 @@ class Admin::TinyPaperController < ApplicationController
       flash[:success] = "Asset successfully uploaded."
       redirect_to :"#{params[:type]}"
     else
-      flash[:error] = @asset.errors.full_messages
+      flash[:error] = @asset.errors.full_messages.join(" ")
       redirect_to :"#{params[:type]}"
     end
   end

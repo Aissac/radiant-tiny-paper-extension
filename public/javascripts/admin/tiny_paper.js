@@ -29,7 +29,7 @@ var assetBrowser = {
     var win = tinyMCEPopup.getWindowArg("window");
     
     win.document.getElementById(tinyMCEPopup.getWindowArg("input")).value = href;
-    
+
     tinyMCEPopup.close();
   }
 };
@@ -42,6 +42,11 @@ document.observe("dom:loaded", function() {
   if ($('sort_order')) {
     Event.observe('sort_order', 'change', function () {
       $("tp_sort").submit();
+    }) 
+  }
+  if ($('view_mode')) {
+    Event.observe('view_mode', 'change', function () {
+      $("tp_view_mode").submit();
     }) 
   }
 });
@@ -68,10 +73,16 @@ function when_completing () {
       }
     });
   });
-  if ($("sort_order")){
+  if ($("sort_order")) {
     $("sort_order").stopObserving('change');
     Event.observe('sort_order', 'change', function () {
       $("tp_sort").submit();
-    }) 
+    })
+  }
+  if ($("view_mode")) {
+    $("view_mode").stopObserving('change');
+    Event.observe('view_mode', 'change', function () {
+      $("tp_view_mode").submit();
+    })
   }
 }

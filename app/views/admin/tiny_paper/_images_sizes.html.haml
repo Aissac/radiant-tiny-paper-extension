@@ -1,0 +1,11 @@
+#tp_sizes
+  - form_tag({}, {:id => 'tp_thumbs', :method => :get}) do
+    %table
+      %tr
+        %th
+          %label Size
+      - @thumbnails.each do |k, v|
+        %tr
+          %td= link_to_size(k, v)
+        %tr
+          %td= link_to_size("original", "")

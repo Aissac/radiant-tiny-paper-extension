@@ -1,0 +1,19 @@
+#tp_upload
+  - form_for :asset, :url => create_path, :html => { :method => "post", :multipart => true } do |f|
+    = hidden_field_tag :type, controller.action_name
+    %table.tp_form
+      %tr
+        %th
+          %label{:for => 'asset_title'} Title
+        %td
+          = f.text_field :title
+      %tr
+        %th
+          %label{:for => 'asset_asset'} Choose a file to upload
+        %td
+          = f.file_field :asset, :size => 20
+      %tr
+        %th
+          &nbsp;
+        %td
+          = submit_tag "Upload"

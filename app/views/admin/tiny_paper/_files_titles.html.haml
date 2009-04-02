@@ -1,0 +1,26 @@
+#tp_ajax_update.clearfix
+  #tp_middle.clearfix
+    .hd
+      .c
+    .bd
+      #tp_pages
+        = will_paginate @assets, :inner_window => 1, :outer_window => 0
+    .ft
+      .c
+  #tp_titles_holder
+    - index = (list_params[:page].to_i - 1) * 25
+    %table
+      %thead
+        %tr
+          %th No.
+          %th= sortable_column_head "File name", :title
+          %th= sortable_column_head "File type", :asset_content_type
+          %th File size
+      %tbody#tp_assets
+        - @assets.each do |asset|
+          - index = index + 1
+          %tr
+            %td.index= index
+            %td= link_to asset.title, asset.asset.url
+            %td= asset.asset_content_type
+            %td= number_to_human_size(asset.asset.size)

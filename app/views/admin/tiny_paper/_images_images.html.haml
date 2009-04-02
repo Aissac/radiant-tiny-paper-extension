@@ -1,0 +1,24 @@
+#tp_ajax_update.clearfix
+  #tp_middle.clearfix
+    #tp_pages
+      = will_paginate @assets, :inner_window => 1, :outer_window => 0
+    #ddl.clearfix
+      #view_mode
+        - form_tag({}, {:id => "tp_view_mode", :method => :get}) do
+          = hidden_field_tag :page, '1'
+          %label{:for => :view} View mode:
+          = select_tag :view, options_for_select([["Text List", "text_list"], ["Thumbnails", "thumbnails"]],list_params[:view])
+      #sort_dv
+        - form_tag({}, {:id => "tp_sort", :method => :get}) do
+          = hidden_field_tag :sort_by, 'title'
+          %label{:for => :sort_order} Sort by title:
+          = select_tag :sort_order, options_for_select([["Ascending", "asc"], ["Descending", "desc"]],list_params[:sort_order])
+  #tp_assets_holder
+    %ul#tp_assets.tp_asset_images.clearfix
+      - @assets.each do |asset|
+        %li
+          %a{:href => asset.asset.url(list_params[:size].to_sym)}
+            %span.tp_asset_image
+              %img{:src => asset.thumbnail(:thumbnail), :style => "padding-top:#{(95 - asset.height(:thumbnail))/2}px"}
+            %span.tp_asset_title
+              = truncate(asset.title, 16)
