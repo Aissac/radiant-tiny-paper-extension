@@ -22,7 +22,7 @@
                       evalScripts:true,
                       method:'get',
                       onComplete: function(request){when_completing()},
-                      parameters: 'title=' + escape(value) + '&authenticity_token=' + encodeURIComponent('<%= form_authenticity_token %>')
+                      parameters: 'title=' + escape(value) + '&authenticity_token=' + encodeURIComponent('#{form_authenticity_token}')
                     })
                   })
                 = reset_filters_tag
