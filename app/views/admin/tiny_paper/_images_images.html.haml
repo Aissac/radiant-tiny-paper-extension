@@ -17,8 +17,10 @@
     %ul#tp_assets.tp_asset_images.clearfix
       - @assets.each do |asset|
         %li
-          %a{:href => asset.asset.url(list_params[:size].to_sym)}
+          %a{:href => '#'}
             %span.tp_asset_image
               %img{:src => asset.thumbnail(:thumbnail), :style => "padding-top:#{(95 - asset.height(:thumbnail))/2}px"}
             %span.tp_asset_title
               = truncate(asset.title, 16)
+            %span.tp_image_sizes{:style => "display:none;"}
+              = render :partial => 'images_sizes', :locals => {:asset => asset}

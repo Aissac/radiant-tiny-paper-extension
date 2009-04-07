@@ -1,11 +1,10 @@
-#tp_sizes
-  - form_tag({}, {:id => 'tp_thumbs', :method => :get}) do
-    %table
-      %tr
-        %th
-          %label Size
-      - @thumbnails.each do |k, v|
-        %tr
-          %td= link_to_size(k, v)
-        %tr
-          %td= link_to_size("original", "")
+%h4 Choose size
+%p= asset.title
+%table#tp_sizes
+  - @thumbnails.each do |k, v|
+    %tr
+      %th= link_to k, asset.asset.url(k)
+      %td= asset.width(k).to_s + 'px x ' + asset.height(k).to_s + 'px'
+  %tr
+    %th= link_to "original", asset.asset.url
+    %td= asset.width.to_s + 'px x ' + asset.height.to_s + 'px'

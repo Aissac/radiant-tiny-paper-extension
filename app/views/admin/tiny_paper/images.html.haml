@@ -34,4 +34,4 @@
   #tp_bd.clearfix
     = render :partial => 'images_images' if list_params[:view] == "thumbnails"
     = render :partial => 'images_titles' if list_params[:view] == "text_list"
-  %input{:type => "hidden", :id => "type", :value => "files"}
+  = hidden_field_tag(:type, "images")
