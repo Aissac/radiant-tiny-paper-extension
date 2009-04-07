@@ -2,8 +2,14 @@ var assetBrowser = {
   init: function() {
     $$('#tp_assets a').each(function (s) {
       Event.observe(s, 'click', function () {
+        $$('span.tp_image_sizes').each(function (sp) {
+          sp.hide();
+        });
         if ($('type').value == 'images' ) {
-          assetBrowser.submit_image(this);
+          var span = this.down('span.tp_image_sizes');
+          if (span) {
+            span.show();
+          }
           return false; 
         }
         if ($('type').value == 'files' || $('type').value == 'pages' ) {
@@ -11,6 +17,11 @@ var assetBrowser = {
           return false; 
         }
       });
+    });
+    $$("#tp_sizes a").each(function (s) {
+      Event.observe(s, 'click', function () {
+        assetBrowser.submit_image(this);
+      })
     });
   },
 
