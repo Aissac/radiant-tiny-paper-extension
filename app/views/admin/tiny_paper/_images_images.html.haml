@@ -24,3 +24,5 @@
               = truncate(asset.title, 16)
             %span.tp_image_sizes{:style => "display:none;"}
               = render :partial => 'images_sizes', :locals => {:asset => asset}
+      -if @assets.empty?
+        %li.no_results No results!

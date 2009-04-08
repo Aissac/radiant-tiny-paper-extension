@@ -15,7 +15,7 @@
           = select_tag :sort_order, options_for_select([["Ascending", "asc"], ["Descending", "desc"]],list_params[:sort_order])
   #tp_titles_holder
     - index = (list_params[:page].to_i - 1) * 25
-    %table#tp_assets
+    %table#tp_assets.tp_assets_list
       %thead
         %tr
           %th No.
@@ -32,3 +32,6 @@
                 %span{:class => "tp_image_sizes", :style => "display:none;"}
                   = render :partial => 'images_sizes', :locals => {:asset => asset}
             %td= asset.width.to_s + 'px x ' + asset.height.to_s + 'px'
+        -if @assets.empty?
+          %tr
+            %td.no_results{:colspan => 4} No results!

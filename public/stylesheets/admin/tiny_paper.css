@@ -46,12 +46,14 @@ label                             {font-size:11px;font-weight:normal;color:#2175
                                   {text-decoration:underline;color:#2B6FB6;}
 span.tp_image_sizes               {background-color:#FFF;position:absolute;left:140px;top:33%;display:block;
                                    border:1px solid #000;padding:10px;width:380px;min-height:150px;}
+.tp_asset_images li.no_results    {font-size:13px;padding:20px 0 0 100px;border:none;}
 /* text list */
-table#tp_assets                   {width:90%;margin:0 5%;}
-#tp_assets th                     {font-size:14px;text-align:left;padding:0 10px;}
-#tp_assets td                     {padding:0 10px;border-left:1px solid #2B6FB6;}
-#tp_assets td.index               {text-align:right;border-left:none;width:25px;}
-table#tp_assets a                 {text-decoration:none;text-align:center;}
+
+table.tp_assets_list              {width:90%;margin:0 5%;}
+table.tp_assets_list th           {font-size:14px;text-align:left;padding:0 10px;}
+table.tp_assets_list td           {padding:0 10px;border-left:1px solid #2B6FB6;}
+table.tp_assets_list td.index     {text-align:right;border-left:none;width:25px;}
+table.tp_assets_list a            {text-decoration:none;text-align:center;}
 table#tp_sizes tr:hover           {color:#2B6FB6;}
 table#tp_sizes                    {width:90%;}
 table#tp_sizes th                 {font-size:11px;text-align:right;padding:2px 5px 2px 0;width:50%;}
@@ -73,6 +75,7 @@ a.sort_desc                       {background:transparent url(/images/admin/tiny
 #tp_content_files ul              {margin:0;padding:0 0 0 30px;}
 #tp_content_files ul li           {margin:10px 0;border-bottom:1px solid #999;}
 #tp_content_files ul li.no_bullet {list-style:none;border-bottom:none;}
+table.tp_assets_list td.no_results{text-align:center;border-left:none;padding-top:20px;font-size:13px;}
 
 .flash                            {padding:5px 0 5px 25px;margin:0 100px 10px 100px;font:#003300;border:2px solid #CCC;}
 .success                          {background:#FFF url(/images/admin/tiny_paper/accept.png) no-repeat 5px 50%;}
