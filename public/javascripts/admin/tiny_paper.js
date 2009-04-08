@@ -49,17 +49,17 @@ document.observe("dom:loaded", function() {
   tinyMCEPopup.onInit.add(assetBrowser.init, assetBrowser);
   if ( $('title') && ($("title").value != null && $("title").value.length != 0)) {
     $("reset").show();
-  }
+  };
   if ($('sort_order')) {
     Event.observe('sort_order', 'change', function () {
       $("tp_sort").submit();
     }) 
-  }
+  };
   if ($('view_mode')) {
     Event.observe('view_mode', 'change', function () {
       $("tp_view_mode").submit();
     }) 
-  }
+  };
 });
 
 function when_starting () {

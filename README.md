@@ -80,14 +80,6 @@ Contributors
 * Cristi Duma
 * Istvan Hoka
 
-TODO
----
-
-* Be more user friedly, by presenting more information (like image actual size in pixels);
-* Improve image browser and file browser UI;
-* Change the way a user chooses the image size to insert (maybe a context menu popup).
-
-
 [ai]: http://aissac.ro/
 [rd]: http://radiantcms.org/
 [settings]: http://github.com/Squeegy/radiant-settings/tree/master
