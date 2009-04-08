@@ -55,12 +55,12 @@ describe Admin::TinyPaperController do
     end
     # xhr request below
     it "renders the images partial when view is set to thumbnails" do
-      controller.should_receive(:render).with(:partial => 'images_images.html.erb', :layout => false).and_return(true)
+      controller.should_receive(:render).with(:partial => 'images_images.html.haml', :layout => false).and_return(true)
       do_xhr_get
     end
     
     it "renders the titles list partial when view is set to text list" do
-      controller.should_receive(:render).with(:partial => 'images_titles.html.erb', :layout => false).and_return(true)
+      controller.should_receive(:render).with(:partial => 'images_titles.html.haml', :layout => false).and_return(true)
       do_xhr_get(:view => 'text_list')
     end
   end
@@ -88,7 +88,7 @@ describe Admin::TinyPaperController do
       response.should be_success
     end
     
-    it "renders the images template" do
+    it "renders the files template" do
       do_http_get
       response.should render_template(:files)
     end
@@ -108,8 +108,8 @@ describe Admin::TinyPaperController do
       assigns[:assets].should == @assets
     end
     # xhr request below
-    it "renders the images partial when view is set to thumbnails" do
-      controller.should_receive(:render).with(:partial => 'files_titles.html.erb', :layout => false).and_return(true)
+    it "renders the files titles partial when view is set to thumbnails" do
+      controller.should_receive(:render).with(:partial => 'files_titles.html.haml', :layout => false).and_return(true)
       do_xhr_get
     end
   end
@@ -161,11 +161,10 @@ describe Admin::TinyPaperController do
       do_post
       response.should redirect_to('admin/tiny_paper/images')
     end
-    
+
     it "redirect to the images/files template on failure" do
-      @errors = mock("error")
+      @errors = mock("error", :full_messages => mock("full_messages", :join => true))
       @asset.stub!(:errors).and_return(@errors)
-      @errors.stub!(:full_messages)
       @asset.should_receive(:save).and_return(false)
       do_post
       response.should redirect_to('admin/tiny_paper/images')

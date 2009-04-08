@@ -16,18 +16,18 @@ describe Asset do
   
   ['title', 'asset_content_type'].each do |i|
     it "sorts by known column #{i}" do
-      Asset.should_receive(:paginate).with(:page => 1, :per_page => 24, :order => "#{i} asc", :conditions => nil)
+      Asset.should_receive(:paginate).with(:page => 1, :per_page => 25, :order => "#{i} asc", :conditions => nil)
       Asset.assets_paginate(:sort_by => i, :sort_order => 'asc', :page => 1, :conditions => nil)
     end
   end
   
   it "does not sort by unknown column" do
-    Asset.should_receive(:paginate).with(:page => 1, :per_page => 24, :conditions => nil)
+    Asset.should_receive(:paginate).with(:page => 1, :per_page => 25, :conditions => nil)
     Asset.assets_paginate(:sort_by => 'test', :sort_order => 'asc', :page => 1, :conditions => nil)
   end
   
   it "does not sort by unknown sort order attribute" do
-    Asset.should_receive(:paginate).with(:page => 1, :per_page => 24, :conditions => nil)
+    Asset.should_receive(:paginate).with(:page => 1, :per_page => 25, :conditions => nil)
     Asset.assets_paginate(:sort_by => 'title', :sort_order => 'test', :page => 1, :condtions => nil)
   end
   
