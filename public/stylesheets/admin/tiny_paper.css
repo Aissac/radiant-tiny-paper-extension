@@ -46,6 +46,9 @@ label                             {font-size:11px;font-weight:normal;color:#2175
                                   {text-decoration:underline;color:#2B6FB6;}
 span.tp_image_sizes               {background-color:#FFF;position:absolute;left:140px;top:33%;display:block;
                                    border:1px solid #000;padding:10px;width:380px;min-height:150px;}
+span.tp_image_sizes h4            {text-align:center;}
+span.tp_image_sizes p             {text-align:center;}
+span.tp_image_sizes a.cancel_image_sizes {float:right;}
 .tp_asset_images li.no_results    {font-size:13px;padding:20px 0 0 100px;border:none;}
 /* text list */
 

@@ -1,10 +1,12 @@
 %h4 Choose size
 %p= asset.title
-%table#tp_sizes
-  - @thumbnails.each do |k, v|
+%div
+  %table#tp_sizes
+    - @thumbnails.each do |k, v|
+      %tr
+        %th= link_to k, asset.asset.url(k)
+        %td= asset.width(k).to_s + 'px x ' + asset.height(k).to_s + 'px'
     %tr
-      %th= link_to k, asset.asset.url(k)
-      %td= asset.width(k).to_s + 'px x ' + asset.height(k).to_s + 'px'
-  %tr
-    %th= link_to "original", asset.asset.url
-    %td= asset.width.to_s + 'px x ' + asset.height.to_s + 'px'
+      %th= link_to "original", asset.asset.url
+      %td= asset.width.to_s + 'px x ' + asset.height.to_s + 'px'
+  = link_to 'Cancel', '#', :onclick => "$(this).up('.tp_image_sizes').hide(); return false;", :class => "cancel_image_sizes"

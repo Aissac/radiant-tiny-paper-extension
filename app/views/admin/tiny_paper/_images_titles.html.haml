@@ -29,8 +29,8 @@
             %td
               %a{:href => '#'} 
                 = asset.title
-                %span{:class => "tp_image_sizes", :style => "display:none;"}
-                  = render :partial => 'images_sizes', :locals => {:asset => asset}
+              %span{:class => "tp_image_sizes", :style => "display:none;"}
+                = render :partial => 'images_sizes', :locals => {:asset => asset}
             %td= asset.width.to_s + 'px x ' + asset.height.to_s + 'px'
         -if @assets.empty?
           %tr
