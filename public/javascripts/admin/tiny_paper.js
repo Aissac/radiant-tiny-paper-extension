@@ -6,7 +6,7 @@ var assetBrowser = {
           sp.hide();
         });
         if ($('type').value == 'images' ) {
-          var span = this.down('span.tp_image_sizes');
+          var span = this.next('span.tp_image_sizes');
           if (span) {
             span.show();
           }
