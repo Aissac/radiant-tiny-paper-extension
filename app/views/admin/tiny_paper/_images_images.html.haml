@@ -19,7 +19,7 @@
         %li
           %a{:href => '#'}
             %span.tp_asset_image
-              %img{:src => asset.thumbnail(:thumbnail), :style => "padding-top:#{(95 - asset.height(:thumbnail))/2}px"}
+              %img{:src => asset.thumbnail(:thumbnail), :style => asset.height(:thumbnail) > 0 ? "padding-top:#{(95 - asset.height(:thumbnail))/2}px" : nil }
             %span.tp_asset_title
               = truncate(asset.title, 16)
           %span.tp_image_sizes{:style => "display:none;"}
