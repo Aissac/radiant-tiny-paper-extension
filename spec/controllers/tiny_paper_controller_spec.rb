@@ -203,7 +203,7 @@ describe Admin::TinyPaperController do
     end
     
     def set_cookie(key, value)
-      request.cookies[key] = CGI::Cookie.new('name' => key, 'value' => value)
+      request.cookies[key] = value
     end
     
     it "should take arbitrary params" do
