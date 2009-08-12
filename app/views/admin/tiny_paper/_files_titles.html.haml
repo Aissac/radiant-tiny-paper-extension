@@ -18,7 +18,7 @@
             %td.index= index
             %td= link_to asset.title, asset.asset.url
             %td= asset.asset_content_type
-            %td= number_to_human_size(asset.asset.size)
+            %td= number_to_human_size(asset.asset.size, :locale => "en")
         -if @assets.empty?
           %tr
             %td.no_results{:colspan => 4} No results!
