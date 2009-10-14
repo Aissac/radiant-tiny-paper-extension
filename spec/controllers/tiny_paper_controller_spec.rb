@@ -5,7 +5,7 @@ describe Admin::TinyPaperController do
   dataset :users
   
   before do
-    login_as :developer
+    login_as :existing
   end
   
   describe "handling GET images" do
@@ -175,12 +175,12 @@ describe Admin::TinyPaperController do
 
     [:images, :files, :pages].each do |action|
       it "#{action} includes javascripts" do
-        ['tiny_mce/tiny_mce_popup','admin/tiny_paper','controls'].each do |js|
+        ['admin/prototype', 'admin/effects','admin/controls', 'tiny_mce/tiny_mce_popup', 'admin/tiny_paper'].each do |js|
           controller.should_receive(:include_javascript).with(js)
         end
           get action
       end
-      
+
       it "#{action} includes stylesheets" do
         controller.should_receive(:include_stylesheet).with("admin/tiny_paper")
         get action
