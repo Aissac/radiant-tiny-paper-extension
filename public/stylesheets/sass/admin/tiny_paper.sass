@@ -20,6 +20,10 @@
     :-webkit-border-bottom-right-radius 10px
     :border 1px solid #0066CC
     :padding 10px 10px 0 10px
+    :margin-bottom 10px
+    &.pages_list
+      p
+        :padding 0 0 7px 0
     .left
       :float left
       :width 30%
@@ -127,6 +131,7 @@
         :margin-right 5px
 
   ul.asset_images
+    :padding-left 40px
     li
       :list-style none
       :float left
@@ -164,9 +169,16 @@
     :padding 10px
     :width 380px
     :min-height 150px
+    :-webkit-border-radius 12px
+    :-moz-border-radius 12px
     h4, p
       :text-align center
     a.cancel_image_sizes
+      :background transparent url('/images/admin/tab_close.png') no-repeat left top
+      :text-indent -9999px
+      :display block
+      :width 16px
+      :height 16px
       :float right
     
   #sizes

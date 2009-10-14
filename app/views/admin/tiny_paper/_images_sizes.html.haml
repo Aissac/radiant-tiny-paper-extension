@@ -1,3 +1,4 @@
+= link_to 'Cancel', '#', :onclick => "$(this).up('.image_sizes').hide(); return false;", :class => "cancel_image_sizes"
 %h4 Choose size
 %p= asset.title
 %div
@@ -9,4 +10,3 @@
     %tr
       %th= link_to "original", asset.asset.url
       %td= asset.width.to_s + 'px x ' + asset.height.to_s + 'px'
-  = link_to 'Cancel', '#', :onclick => "$(this).up('.image_sizes').hide(); return false;", :class => "cancel_image_sizes"

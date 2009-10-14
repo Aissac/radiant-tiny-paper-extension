@@ -6,7 +6,7 @@ About
 
 An extension by [Aissac][ai] that adds [Paperclipped][paperclipped] based [Tiny MCE][tinymce] support to [Radiant CMS][rd]. This extension provides a `Rich Text Editor` filter and allows you to edit the content using the TinyMCE editor. It also provides an Image and File browser to help you manage the Paperclipped assets.
 
-Tested on Radiant 0.7.1 and 0.8.
+Tested on Radiant 0.7.1, 0.8 and 0.9 RC1.
 
 Features
 ---
@@ -63,13 +63,6 @@ The last step is to update the Tiny-Paper assets:
 
     rake radiant:extensions:tiny_paper:update
 
-###Note
-
-To get the Radiant 0.7.1 version tag you need to:
-
-    cd vendor/extensions/tiny_paper/
-    git checkout v0.7
-
 Usage
 ---
 
@@ -84,8 +77,8 @@ The File Browser can be accessed through the `insert/edit link` icon and has two
 Contributors
 ---
 
-* Cristi Duma
-* Istvan Hoka
+* Cristi Duma ([@cristi_duma][cd])
+* Istvan Hoka ([@ihoka][ih])
 
 [ai]: http://aissac.ro/
 [rd]: http://radiantcms.org/
@@ -93,3 +86,5 @@ Contributors
 [paperclipped]: http://github.com/kbingman/paperclipped/tree/master
 [tp]: http://blog.aissac.ro/radiant/tiny-paper-extension/
 [tinymce]: http://tinymce.moxiecode.com/
+[cd]: http://twitter.com/cristi_duma
+[ih]: http://twitter.com/ihoka
