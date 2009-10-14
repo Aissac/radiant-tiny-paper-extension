@@ -78,8 +78,10 @@ class Admin::TinyPaperController < ApplicationController
     
     def attach_js_css
       include_stylesheet "admin/tiny_paper"
+      include_javascript "admin/prototype"
+      include_javascript "admin/effects"
+      include_javascript "admin/controls"
       include_javascript "tiny_mce/tiny_mce_popup"
       include_javascript "admin/tiny_paper"
-      include_javascript "controls"
     end 
 end

@@ -1,0 +1,242 @@
+.clearfix:after
+  :content "."
+  :display block
+  :height 0
+  :clear both
+  :visibility hidden
+.clearfix
+  :display inline-block
+.clearfix
+  :display block
+
+#tiny_paper
+  :margin -10px -7px 0 -7px
+
+  #top
+    :background-color #ccc
+    :-moz-border-radius-bottomleft 10px
+    :-moz-border-radius-bottomright 10px
+    :-webkit-border-bottom-left-radius 10px
+    :-webkit-border-bottom-right-radius 10px
+    :border 1px solid #0066CC
+    :padding 10px 10px 0 10px
+    .left
+      :float left
+      :width 30%
+    .right
+      :float right
+      :width 68%
+    p
+      :margin 0
+      :padding 0
+    ul
+      :margin 0 0 10px 0
+      :padding 0
+      li
+        :list-style none
+        :float left
+        :margin-right 10px
+        a
+          :text-decoration none
+          :width 70px
+          :height 25px
+          :display block
+          :outline none
+          :font-size 18px
+          :text-align center
+          :padding-top 3px
+          :-moz-border-radius 12px
+          :-webkit-border-radius 12px
+          :border 1px solid #0066CC
+          &.selected
+            :background white
+          &:hover
+            :background white
+            :color #000
+
+  #filter
+    :background-color #fff
+    :border 2px inset threedface
+    :width 147px
+    input
+      :border none
+    
+  #reset
+    :background transparent url('/images/admin/tab_close.png') no-repeat right top
+    :padding 0 7px
+    :outline none
+    :text-decoration none
+
+  #filter_form
+    :margin 0
+    label
+      :font-size 11px
+      :font-weight normal
+      :color #21759B
+
+  #upload
+    table.form
+      :float right
+      th, td
+        :padding 3px 0
+        :vertical-align middle
+      th
+        :text-align right
+        :color #21759B
+        :padding-right 5px
+    input[type=text], input[type="file"]
+      :width 205px
+      :border 2px inset threedface
+
+  #pagination
+    :width 45%
+    :float left
+    .pagination
+      :padding 3px
+      :text-align center
+      :float left
+      a
+        :padding 0.2em 0.3em
+      span
+        :padding 0.2em 0.3em
+        &.disabled
+          :color #AAAAAA
+        &.current
+          :-webkit-border-radius 12px
+          :-moz-border-radius 12px
+          :font-weight bold
+          :background-color #999
+          :display inline-block
+          :padding 3px 8px
+      a
+        &:link, &:visited, &:hover, &:focus
+          :color #21759B
+          :text-decoration none
+        &:hover, &:focus
+          :text-decoration underline
+
+  #middle
+    :margin-bottom 10px
+    :padding 0 20px
+    #ddl
+      :width 54%
+      :float right
+      :margin-top 3px
+      div
+        :float right
+        :margin-right 5px
+
+  ul.asset_images
+    li
+      :list-style none
+      :float left
+      :margin 0 10px 10px 0
+      :border 1px solid #000
+      :padding 5px 5px 0 5px
+      :display block
+      &:hover
+        :border 1px solid #2B6FB6
+      .asset_image
+        :width 100px
+        :height 100px
+        :display block
+      .asset_title
+        :text-align center
+        :display block
+      &.no_results
+        :font-size 13px
+        :padding 20px 0 0 100px
+        :border none
+    a
+      :text-decoration none
+      :text-align center
+      span.asset_title:hover
+        :text-decoration underline
+        :color #2B6FB6
+        
+  span.image_sizes
+    :background-color #FFF
+    :position absolute
+    :left 140px
+    :top 33%
+    :display block
+    :border 1px solid #000
+    :padding 10px
+    :width 380px
+    :min-height 150px
+    h4, p
+      :text-align center
+    a.cancel_image_sizes
+      :float right
+    
+  #sizes
+    width: 90%
+    tr:hover
+      :color #2B6FB6
+    th
+      :font-size 11px
+      :text-align right
+      :padding 2px 5px 2px 0
+      :width 50%
+    td
+      :padding 2px 5px
+      :width 50%
+      :border-left none
+
+  .asset_images li:hover a span.asset_title, #sizes a:hover
+    :text-decoration underline
+    :color #2B6FB6
+
+  table.assets_list
+    :width 90%
+    :margin 0 5%
+    th
+      :font-size 14px
+      :text-align left
+      :padding 0 10px
+    td
+      :padding 0 10px
+      :border-left 1px solid #2B6FB6
+      &.index
+        :text-align right
+        :border-left none
+        :width 25px
+      &.no_results
+        :text-align center
+        :border-left none
+        :padding-top 20px
+        :font-size 13px
+    a
+      :text-decoration none
+      :text-align center
+
+  a
+    &.sort_asc
+      :background transparent url('/images/admin/asc.gif') no-repeat right center
+      :padding-right 17px
+    &.sort_desc
+      :background transparent url('/images/admin/desc.gif') no-repeat right center
+      :padding-right 17px
+  #content_files
+    a
+      :text-decoration none
+      :font-size 13px
+    ul
+      :margin 0
+      :padding 0 0 0 30px
+      li
+        :margin 10px 0
+        :border-bottom 1px solid #999
+        &.no_bullet
+          :list-style none
+          :border-bottom none
+
+  .flash
+    :padding 5px 0 5px 25px
+    :margin 0 100px 10px 100px
+    :font #003300
+    :border 2px solid #CCC
+  .success
+    :background #FFF url('/images/admin/accept.png') no-repeat 5px 50%
+  .error
+    :background #FFF url('/images/admin/exclamation.png') no-repeat 5px 50%

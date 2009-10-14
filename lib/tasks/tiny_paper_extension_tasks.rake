@@ -4,12 +4,7 @@ namespace :radiant do
       
       desc "Runs the migration of the Tiny Paper extension"
       task :migrate => :environment do
-        require 'radiant/extension_migrator'
-        if ENV["VERSION"]
-          TinyPaperExtension.migrator.migrate(ENV["VERSION"].to_i)
-        else
-          TinyPaperExtension.migrator.migrate
-        end
+        puts "This extension does not affect the database. Nothing done."
       end
       
       desc "Copies public assets of the Tiny Paper to the instance public/ directory."

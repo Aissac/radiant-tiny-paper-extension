@@ -1,16 +1,12 @@
-#tp_body
-  #tp_top
-    %ul#tp_tabs.clearfix
-      %li
-        %a{:id => 'files_link', :href => files_path} Files
-      %li
-        %a{:id => 'pages_link', :href => pages_path, :class => "selected"} Pages
+#tiny_paper
+  #top
+    %ul.clearfix
+      %li= link_to "Files", files_path
+      %li= link_to "Pages", pages_path, :class => "selected"
     %p Choose a page to create a direct link to it:
-  #tp_top_round
-    #tp_top_round_inside
-  #tp_hd
-    #tp_content_files
-      #tp_assets
+  #hd
+    #content_files
+      #assets
         %ul
           = page_list (@homepage)
   = hidden_field_tag(:type, 'pages')

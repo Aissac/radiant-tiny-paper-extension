@@ -1,12 +1,12 @@
 var assetBrowser = {  
   init: function() {
-    $$('#tp_assets a').each(function (s) {
+    $$('#assets a').each(function (s) {
       Event.observe(s, 'click', function () {
-        $$('span.tp_image_sizes').each(function (sp) {
+        $$('span.image_sizes').each(function (sp) {
           sp.hide();
         });
         if ($('type').value == 'images' ) {
-          var span = this.next('span.tp_image_sizes');
+          var span = this.next('span.image_sizes');
           if (span) {
             span.show();
           }
@@ -18,7 +18,7 @@ var assetBrowser = {
         }
       });
     });
-    $$("#tp_sizes a").each(function (s) {
+    $$("#sizes a").each(function (s) {
       Event.observe(s, 'click', function () {
         assetBrowser.submit_image(this);
       })
@@ -52,12 +52,12 @@ document.observe("dom:loaded", function() {
   };
   if ($('sort_order')) {
     Event.observe('sort_order', 'change', function () {
-      $("tp_sort").submit();
+      $("sort_form").submit();
     }) 
   };
   if ($('view_mode')) {
     Event.observe('view_mode', 'change', function () {
-      $("tp_view_mode").submit();
+      $("view_mode_form").submit();
     }) 
   };
 });
@@ -69,19 +69,19 @@ function when_starting () {
 
 function when_completing () {
   $("spinner").hide();
-  $$('#tp_assets a').each(function (s) {
+  $$('#assets a').each(function (s) {
     s.stopObserving('click');
   });
-  $$('#tp_sizes a').each(function (s) {
+  $$('#sizes a').each(function (s) {
     s.stopObserving('click');
   });
-  $$('#tp_assets a').each(function (s) {
+  $$('#assets a').each(function (s) {
     Event.observe(s, 'click', function () {
-      $$('span.tp_image_sizes').each(function (sp) {
+      $$('span.image_sizes').each(function (sp) {
         sp.hide();
       });
       if ($('type').value == 'images' ) {
-        var span = this.down('span.tp_image_sizes');
+        var span = this.down('span.image_sizes');
         if (span) {
           span.show();
         }
@@ -93,7 +93,7 @@ function when_completing () {
       }
     });
   });
-  $$("#tp_sizes a").each(function (s) {
+  $$("#sizes a").each(function (s) {
     Event.observe(s, 'click', function () {
       assetBrowser.submit_image(this);
     })
@@ -101,13 +101,13 @@ function when_completing () {
   if ($("sort_order")) {
     $("sort_order").stopObserving('change');
     Event.observe('sort_order', 'change', function () {
-      $("tp_sort").submit();
+      $("sort_form").submit();
     })
   }
   if ($("view_mode")) {
     $("view_mode").stopObserving('change');
     Event.observe('view_mode', 'change', function () {
-      $("tp_view_mode").submit();
+      $("view_mode_form").submit();
     })
   }
 }

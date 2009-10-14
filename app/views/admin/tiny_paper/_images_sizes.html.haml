@@ -1,7 +1,7 @@
 %h4 Choose size
 %p= asset.title
 %div
-  %table#tp_sizes
+  %table#sizes
     - @thumbnails.each do |k, v|
       %tr
         %th= link_to k, asset.asset.url(k)
@@ -9,4 +9,4 @@
     %tr
       %th= link_to "original", asset.asset.url
       %td= asset.width.to_s + 'px x ' + asset.height.to_s + 'px'
-  = link_to 'Cancel', '#', :onclick => "$(this).up('.tp_image_sizes').hide(); return false;", :class => "cancel_image_sizes"
+  = link_to 'Cancel', '#', :onclick => "$(this).up('.image_sizes').hide(); return false;", :class => "cancel_image_sizes"

@@ -1,19 +1,19 @@
-#tp_body
-  #tp_top.clearfix
+#tiny_paper
+  #top.clearfix
     .left
-      - form_tag({}, {:id => "tp_filter", :method => :get}) do
+      - form_tag({}, {:id => "filter_form", :method => :get}) do
         %table
           %tr
             %td
               %label{:for => 'title'} Filter:
           %tr
             %td
-              #tp_tb
+              #filter
                 = text_field_tag :title, list_params[:title], :autocomplete => 'off'
                 :javascript
                   new Form.Element.DelayedObserver('title', 0.4, function(element, value) {
                     when_starting();
-                    new Ajax.Updater('tp_ajax_update', '/admin/tiny_paper/images', {
+                    new Ajax.Updater('ajax_update', '/admin/tiny_paper/images', {
                       asynchronous:true,
                       evalScripts:true,
                       method:'get',
@@ -26,12 +26,10 @@
               %img{:id => "spinner", :style => "display:none", :src => "/images/admin/spinner.gif", :alt => "loading"}
     .right
       = render :partial => "upload"
-  #tp_top_round
-    #tp_top_round_inside      
     
   = show_flash_message
 
-  #tp_bd.clearfix
+  #bd.clearfix
     = render :partial => 'images_images' if list_params[:view] == "thumbnails"
     = render :partial => 'images_titles' if list_params[:view] == "text_list"
   = hidden_field_tag(:type, "images")
