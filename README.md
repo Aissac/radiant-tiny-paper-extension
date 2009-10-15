@@ -25,13 +25,11 @@ Tiny-Paper Extension has two dependencies, the Paperclipped extension and the wi
 
 Install the [Paperclipped Extension][paperclipped]
 
-    git submodule add git://github.com/kbingman/paperclipped.git\
-      vendor/extensions/paperclipped
+    git clone git://github.com/kbingman/paperclipped.git vendor/extensions/paperclipped
     
 And the will\_paginate gem/plugin:
 
-    git submodule add git://github.com/mislav/will_paginate.git\
-      vendor/plugins/will_paginate
+    git clone git://github.com/mislav/will_paginate.git vendor/plugins/will_paginate
 
 or
 
@@ -39,13 +37,11 @@ or
 
 You may also want to install the [Settings Extension][settings] since it provides a very convenient way to configure thumbnail sizes for image assets:
 
-    git submodule add git://github.com/Squeegy/radiant-settings.git\
-      vendor/extensions/settings
+    git clone git://github.com/Squeegy/radiant-settings.git vendor/extensions/settings
 
 Finally, install the [Tiny-Paper Extension][tp]
 
-    git submodule add git://github.com/Aissac/radiant-tiny-paper-extension.git\
-      vendor/extensions/tiny_paper
+    git clone git://github.com/Aissac/radiant-tiny-paper-extension.git vendor/extensions/tiny_paper
 
 For more information about installing and configuring Settings and Paperclipped check the extensions official pages.
     
@@ -62,6 +58,14 @@ and then run the Paperclipped migrations and updates:
 The last step is to update the Tiny-Paper assets:
 
     rake radiant:extensions:tiny_paper:update
+
+###Note
+
+The git branches hold stable versions of the extension for older version of Radiant CMS. To checkout one of these branches:
+
+    git clone git://github.com/Aissac/radiant-tiny-paper-extension.git vendor/extensions/tiny_paper
+    cd vendor/extensions/tiny_paper
+    git checkout -b <branch-name> origin/<remote-branch-name>
 
 Usage
 ---
