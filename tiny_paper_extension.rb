@@ -21,7 +21,7 @@ class TinyPaperExtension < Radiant::Extension
     Asset.class_eval { include TinyPaper::AssetExtensions }
     Admin::PagesController.class_eval { include TinyPaper::AddJavascriptsAndStyles }
         
-  	admin.page.edit.add :part_controls, "admin/page/tiny_mce_control"
+  	admin.page.edit.add :part_controls, "tiny_mce_control"
   end
   
   def deactivate
