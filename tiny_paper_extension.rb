@@ -2,7 +2,7 @@
 require_dependency 'application_controller'
 
 class TinyPaperExtension < Radiant::Extension
-  version "0.9"
+  version "0.8"
   description "Radiand CMS Tiny MCE support using Paperclipped assets"
   url "http://blog.aissac.ro/radiant/tiny-paper-extension/"
 
