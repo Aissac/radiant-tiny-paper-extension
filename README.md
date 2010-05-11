@@ -6,7 +6,7 @@ About
 
 An extension by [Aissac][ai] that adds [Paperclipped][paperclipped] based [Tiny MCE][tinymce] support to [Radiant CMS][rd]. This extension provides a `Rich Text Editor` filter and allows you to edit the content using the TinyMCE editor. It also provides an Image and File browser to help you manage the Paperclipped assets.
 
-Tested on Radiant 0.7.1, 0.8 and 0.9 RC1.
+Tested on Radiant 0.7.1, 0.8 and 0.9 RC2.
 
 Features
 ---
@@ -18,12 +18,30 @@ Features
 * Thumbnails and text list views;
 * Directly add a link to a Radiant Page from TinyMce editor.
 
+Important Notice!
+---
+
+The git branches of this repository hold stable versions of the extension for older versions of Radiant CMS. For example the _0.8_ branch is compatible with Radiant 0.8. 
+
+To checkout one of these branches:
+
+    git clone git://github.com/Aissac/radiant-tiny-paper-extension.git vendor/extensions/tiny_paper
+    cd vendor/extensions/tiny_paper
+    git checkout -b <branch-name> origin/<remote-branch-name>
+
+As an example, if you're working on Radiant 0.8 you will need to checkout the 0.8 branch:
+    
+    cd vendor/extensions/tiny_paper
+    git checkout -b my_branch origin/0.8
+    
+Also, be sure to checkout a version of the Paperclipped extension that is compatible with the Radiant version you're working on.
+
 Installation
 ---
 
 Tiny-Paper Extension has two dependencies, the Paperclipped extension and the will\_paginate gem/plugin.
 
-Install the [Paperclipped Extension][paperclipped]
+Install the [Paperclipped Extension][paperclipped] (be sure to checkout a version of Paperclipped compatible with the Radiant version you're working on.)
 
     git clone git://github.com/kbingman/paperclipped.git vendor/extensions/paperclipped
     
@@ -58,14 +76,6 @@ and then run the Paperclipped migrations and updates:
 The last step is to update the Tiny-Paper assets:
 
     rake radiant:extensions:tiny_paper:update
-
-###Note
-
-The git branches hold stable versions of the extension for older version of Radiant CMS. To checkout one of these branches:
-
-    git clone git://github.com/Aissac/radiant-tiny-paper-extension.git vendor/extensions/tiny_paper
-    cd vendor/extensions/tiny_paper
-    git checkout -b <branch-name> origin/<remote-branch-name>
 
 Usage
 ---
