@@ -8,7 +8,7 @@ class Admin::TinyPaperController < ApplicationController
     filter_by_params([:view, :size])
     list_params[:images] = 'images'
     @assets = Asset.assets_paginate(list_params)
-    @thumbnails = Asset.attachment_definitions[:asset][:styles]
+    @thumbnails = Asset.thumbnail_definitions
 
     respond_to do |f|
       f.html { render }
