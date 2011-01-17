@@ -3,7 +3,7 @@
 %p= asset.title
 %div
   %table#sizes
-    - @thumbnails.each do |k, v|
+    - Asset.thumbnail_definitions.each do |k, v|
       %tr
         %th= link_to k, asset.asset.url(k)
         %td= asset.width(k).to_s + 'px x ' + asset.height(k).to_s + 'px'

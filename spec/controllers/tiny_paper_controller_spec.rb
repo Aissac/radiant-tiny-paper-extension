@@ -12,10 +12,8 @@ describe Admin::TinyPaperController do
     
     before do
       @assets = (1..10).map { |i| mock_model(Asset)}
-      @thumbnails =  {:asset => {:styles => {:thumbnail=>["100x100>", :png], :icon=>["42x42#", :png], :normal=>"640x640>"}}}
       
       Asset.stub!(:assets_paginate).and_return(@assets)
-      Asset.stub!(:attachment_definitions).and_return(@thumbnails)
       
       @list_params = {:view => "thumbnails"}
       controller.stub!(:list_params).and_return(@list_params)
